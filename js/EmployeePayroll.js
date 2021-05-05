@@ -4,23 +4,52 @@ class EmployeePayroll {
     salary;
     gender;
     startDate;
-//constructor
-// constructor(...params) {
-//     this.id = params[0];
-//     this.name = params[1];
-//     this.salary = params[2];
-//     this.gender = params[3];
-//     this.startDate = params[4];
-// }
+    note;
+    department;
+    profilePic;
+
 
 //getter and setter method
+get id() { return this._id; }
+set id(_id) { this._id = id; }
+
 get name() {return this._name;}
 set name(name) {
-    let nameRegex = RegExp('^[A-Z]{1}[a-z]{3}$');
+    let nameRegex = RegExp('^[A-Z]{1}[a-zA-Z\\s]{3,}$');
     if (nameRegex.test(name))
     this._name = name;
     else throw 'Name is Incorrect';
  }
+
+ get salary() {
+     return this._salary;
+ }
+ set salary(_salary)
+ {
+    this._salary = this.salary;
+ }
+
+ get profilePic() { return this._profilePic; }
+ set profilePic(_profilePic) {this._profilePic = this.profilePic; }
+
+ get gender() { return this._gender; }
+ set gender(_gender) {this._gender = this.gender; }
+
+ get startDate() { return this._startDate; }
+ set startDate(_startDate) {
+    let now = new Date() ;
+    if (_startDate > now) throw 'Start Date is a Future Date!!';
+    var diff = Math.abs(now.getTime() - startDate.getTime());
+    if (diff / (1000 * 60 * 60 * 24) > 30)
+    throw 'Start date is beyond 30 days!!';
+    this._startDate = this.startDate; 
+}
+
+ get note() { return this._note; }
+ set note(_note) { this._note = this.note; }
+
+ get department() { return this._department; }
+ set department(_department) { this._department = this.department; }
 
 //method
 toString() {
@@ -28,17 +57,8 @@ toString() {
     const empdate = this.startDate == undefined ? "undefined":
                     this.startDate.tpLocaleDateString("en-US", options);
     return "id= " + this.id +", name= " + this.name + ", salary= " + this.salary +
-    ", gender= " + this.gender + ", startDate= " + empdate;
+    ", gender= " + this.gender + ", startDate= " + empdate + ", note= " + this.note + ", department= " + this.department
+    + ", profilePic= " + this.profilePic;
 }
 }
 
-// let employeePayrollData = new EmployeePayrollData(1, "Mark", 30000);
-// console.log(employeePayrollData.toString());
-// try{
-// employeePayrollData.name = "John";
-// console.log(employeePayrollData.toString());
-// } catch(e){
-//     console.error(e);
-// }
-// let newEmployeePayrollData = new EmployeePayrollData(1, "Terrisa", 3000, "F", new Date());
-// console.log(newEmployeePayrollData.toString());
