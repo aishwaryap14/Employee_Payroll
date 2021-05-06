@@ -11,7 +11,7 @@ class EmployeePayroll {
 
 //getter and setter method
 get id() { return this._id; }
-set id(_id) { this._id = id; }
+set id(id) { this._id = id; }
 
 get name() {return this._name;}
 set name(name) {
@@ -24,38 +24,38 @@ set name(name) {
  get salary() {
      return this._salary;
  }
- set salary(_salary)
+ set salary(salary)
  {
     this._salary = this.salary;
  }
 
  get profilePic() { return this._profilePic; }
- set profilePic(_profilePic) {this._profilePic = this.profilePic; }
+ set profilePic(profilePic) {this._profilePic = this.profilePic; }
 
  get gender() { return this._gender; }
- set gender(_gender) {this._gender = this.gender; }
+ set gender(gender) {this._gender = this.gender; }
 
- get startDate() { return this._startDate; }
- set startDate(_startDate) {
+ get date() { return this._date; }
+ set date(date) {
     let now = new Date() ;
-    if (_startDate > now) throw 'Start Date is a Future Date!!';
-    var diff = Math.abs(now.getTime() - startDate.getTime());
+    if (date > now) throw 'Start Date is a Future Date!!';
+    var diff = Math.abs(now.getTime() - date.getTime());
     if (diff / (1000 * 60 * 60 * 24) > 30)
     throw 'Start date is beyond 30 days!!';
-    this._startDate = this.startDate; 
+    this._date = this.date; 
 }
 
  get note() { return this._note; }
- set note(_note) { this._note = this.note; }
+ set note(note) { this._note = this.note; }
 
  get department() { return this._department; }
- set department(_department) { this._department = this.department; }
+ set department(department) { this._department = this.department; }
 
 //method
 toString() {
-    const options = { year: 'numeric', month: 'long', day: 'numeric'};
-    const empdate = this.startDate == undefined ? "undefined":
-                    this.startDate.tpLocaleDateString("en-US", options);
+    const options = { year: 'numeric', month: 'short', day: 'numeric'};
+    const empdate = !this.date  ? "undefined":
+                    this.date.toLocaleDateString("en-US", options);
     return "id= " + this.id +", name= " + this.name + ", salary= " + this.salary +
     ", gender= " + this.gender + ", startDate= " + empdate + ", note= " + this.note + ", department= " + this.department
     + ", profilePic= " + this.profilePic;

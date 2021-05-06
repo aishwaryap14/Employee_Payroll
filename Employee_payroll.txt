@@ -1,0 +1,124 @@
+
+
+
+
+
+const resetForm = () => {
+    setValue('#name', '');
+    unsetSelectedValues('[name=profile]');
+    unsetSelectedValues('[name=gender]');
+    unsetSelectedValues('[name=department]');
+    setValue('#salary','');
+    setValue('#notes','');
+    setValue('#day',0);
+    setValue('#month',0);
+    setValue('#year',0);
+}
+
+const unsetSelectedValues = (propertyValue) => {
+    let allItems = document.querySelectorAll(propertyValue);
+    allItems.forEach(item => {
+        item.checked = false;
+    });
+}
+
+
+const setValue = (id, value) => {
+    const element = document.querySelector(id);
+    element.value = value;
+}
+
+----
+const setEmployeePayrollObject = () => {
+    employeePayrollObj._name = getInputValueById('#name');
+    employeePayrollObj._profilePic = getSelectedValues('[name=profile]').pop();
+    employeePayrollObj._gender = getSelectedValues('[name=gender]').pop();
+    employeePayrollObj._department = getSelectedValues('[name=department]');
+    employeePayrollObj._salary = getInputValueById('#salary');
+    employeePayrollObj._note = getInputValueById('#notes');
+    let date = getInputValueById('#day')+" "+getInputValueById('#month')+" "+
+               getInputValueById('#year');
+    employeePayrollObj._startDate = date;
+}
+
+function createAndUpdateStorage (employeePayroll) {
+    let employeePayrollList = JSON.parse(localStorage.getItem("EmployeePayrollList"));
+    if(employeePayrollList) {
+        let empPayrollData = employeePayrollList
+                            .find(empData._id == employeePayrollObj._id);
+        if(!empPayrollData) {
+        employeePayrollList.push(createEmployeePayroll());
+        } else {
+            const index = employeePayrollList.map(empData => empData._id)
+                                             .indexOf(employeePayroll._id);
+            employeePayrollList.splice(index, 1, createEmployeePayroll(employeePayroll._id));
+        }
+    } else {
+        employeePayrollList = [employeePayroll]
+    }
+    alert(employeePayrollList.toString());
+    localStorage.setItem("EmployeePayrollList", JSON.stringify(employeePayrollList))
+}
+
+
+const createEmployeePayrollData = (id) => {
+    let employeePayroll = new EmployeePayroll();
+    if (!id) employeePayroll.id = createNewEmployeeId();
+    else employeePayroll.id = id;
+    setEmployeePayrollData(employeePayroll);
+    return employeePayroll;
+}
+
+const setEmployeePayrollData = (employeePayroll) => {
+    try {
+        employeePayroll.name = employeePayrollObj._name;
+    } catch (e) {
+        setTextValue('.text-error', e);
+        throw e;
+    }
+    employeePayroll.profilePic = employeePayrollObj._profilePic;
+    employeePayroll.gender = employeePayrollObj._gender;
+    employeePayroll.department = employeePayrollObj._department;
+    employeePayroll.salary = employeePayrollObj._salary;
+    employeePayroll.note = employeePayrollObj._note;
+    try {
+        employeePayroll.startDate = new Date(Date.parse(employeePayrollObj._startDate));
+    } catch (e) {
+        setTextValue('.date-error', e);
+        throw e;
+    }
+    alert(employeePayroll.toString());
+}
+
+
+const createNewEmployeeId = () => {
+    let empId = localStorage.getItem("EmployeeID");
+    empId = !empId ? 1 : (parseInt(empId)+1).toString();
+    localStorage.setItem("EmployeeID", empId);
+    return empId;
+}
+
+--------------------------------------
+new_payroll.js
+--------------------------------------
+let date = document.getElementById('date');
+date.addEventListener('input', function() {
+    const startDate = new Date(Date.parse(getInputValueById('#day') +" "+getInputValueById('#month')+" "+
+                    getInputValueById('#year')));
+    try {
+        (new EmployeePayroll()).startDate = new Date(Date.parse(startDate));
+        setTextValue('.date-error', "");
+    } catch (e) {
+        setTextValue('.date-error', e);
+    }
+});
+
+
+const setTextValue = function (id, value)  {
+    console.log(id, value);
+    const element = document.querySelector(id);
+    element.textContent = value;
+}
+
+
+

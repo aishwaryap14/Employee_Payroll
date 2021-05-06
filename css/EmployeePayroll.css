@@ -23,9 +23,17 @@ body {
     align-items: center;
     border: 0px solid green;
     width: 80%;
+    
+}
+.logo-content * {
+box-sizing: border-box;
+text-decoration: none;
+color: #FFFFFF;
 }
 
-.logo-content-img {border: solid 0px #42515f;}
+.logo-content-img {
+    border: solid 0px #42515f;
+    }
 
 .emp-text {
     font: normal normal bold 19px/25px Montserrat;
@@ -35,9 +43,12 @@ body {
     text-transform: capitalize;
 }
 
-.emp-payroll { color: #42515f}
+.emp-payroll { 
+    color: #42515f;
+    }
 
-*{box-sizing: border-box;}
+*{box-sizing: border-box;
+}
 
 .form-content {
     min-height: calc(100% - 80px);
@@ -67,6 +78,7 @@ body {
     text-transform: capitalize;
     opacity: 1;
     padding-bottom: 20px;
+    
 }
 
 .row-content {
@@ -93,6 +105,13 @@ label {
     font-family: Roboto;
 }
 
+error-output {
+    margin-left: 10px;
+    font-size: 12px;
+    font-style: italic;
+    color: red;
+}
+
 .input {
     width: 100%;
     padding: 12px;
@@ -101,9 +120,10 @@ label {
     resize: vertical;
 }
 
-.profile-radio-content {
+.profile-radio-content  {
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
 .profile-radio-content > label {
@@ -281,7 +301,8 @@ textarea {
     overflow: auto;
 }
 .table {
-    width: 100%;
+    width: 80%;
+    margin: 0px 0px 0px 130px;
     border-collapse: separate;
     border-spacing: 0 15px;
     min-width: 800px;
@@ -332,4 +353,5 @@ td img {
     display: inline-block;
     font-weight: 300;
     margin-bottom: 8px;
+    color: black;
 }
