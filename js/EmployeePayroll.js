@@ -35,14 +35,14 @@ set name(name) {
  get gender() { return this._gender; }
  set gender(gender) {this._gender = this.gender; }
 
- get date() { return this._date; }
- set date(date) {
+ get startDate() { return this._startDate; }
+ set startDate(startDate) {
     let now = new Date() ;
-    if (date > now) throw 'Start Date is a Future Date!!';
-    var diff = Math.abs(now.getTime() - date.getTime());
+    if (startDate > now) throw 'Start Date is a Future Date!!';
+    var diff = Math.abs(now.getTime() - startDate.getTime());
     if (diff / (1000 * 60 * 60 * 24) > 30)
     throw 'Start date is beyond 30 days!!';
-    this._date = this.date; 
+    this._startDate = this.startDate; 
 }
 
  get note() { return this._note; }
