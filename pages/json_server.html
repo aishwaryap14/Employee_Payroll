@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .body {margin: auto;}
+        div {
+            border: 1px solid black;
+            background-color: lightgreen;
+            padding: 50px;
+            width: 80%;
+            font-size: xx-large;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+    const getElem = document.querySelector("#get_services");
+    const getURL = "http://localhost:3000/employee/1604589594363";
+    makeServiceCall("GET", getURL, true)
+        .then(responseText => {
+            getElem.textContent = "Get User Data: " + responseText;
+        })
+        .catch(error => {
+            getElem.textContent = "GET Error Status: " + JSON.stringify(error);
+        });
+    const deleteElem = document.querySelector("#delete_services");
+    const deleteURL = "http://localhost:3000/employee/1604589699566";
+    makeServiceCall("DELETE", deleteURL, false)
+        .then(responseText => {
+            deleteElem.textContent = "Delete data: "+ responseText;
+        })
+        .catch(error => {
+            deleteElem.textContent = "DELETE Error Status: "+ JSON.stringify(error);
+        });
+
+    // const putElem = document.querySelector("#delete_services");
+    // const putURL = "http://localhost:3000/employee/1604589699566";
+    // makeServiceCall("PUT", putURL, false)
+    //     .then(responseText => {
+    //         deleteElem.textContent = "Put data: "+ responseText;
+    //     })
+    //     .catch(error => {
+    //         deleteElem.textContent = "PUT Error Status: "+ JSON.stringify(error);
+    //     });
+
+    const empPayrollData = {
+        _name: 'Narayan Mahadevan',
+        _gender: 'male',
+        _department: ['HR', 'Finance'],
+        _salary: '500000',
+        _startDate: '29 Oct 2019',
+        _note: '',
+        _profilePic: '../assets/profile-images/Ellipse -2.png'
+    };
+
+    const postElem = document.querySelector("#post_services");
+    const postURL = "http://localhost:3000/employee/";
+    makeServiceCall("POST", postURL, true, empPayrollData)
+        .then(responseText => {
+            postElem.textContent = "New User Data: "+responseText;
+        })
+        .catch(error => {
+            postElem.textContent = "POST Error Status: "+ JSON.stringify(error);
+        });
+    </script>
+    <script src="../js/utility.js"></script>
+</body>
+
+</html>

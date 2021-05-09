@@ -121,4 +121,35 @@ id, name, class >> dom selectors
 
 https://www.npmjs.com/package/readline-sync
 
+Node is runtime environment to run js code
 
+folder Structure-
+controller
+middleware
+routes
+services
+model
+
+npm init -y => to create package.json
+touch server.js >> for ubuntu
+npm install express
+npm install express-validator
+
+to run >> node server.js
+OR npm start
+npm i body-parser cors >> for communication of frontent and backend ports we use cors
+npm i mongoose
+
+
+mongo
+show dbs
+use dbName >> to create db
+
+200 - successful
+500 - sending wrong data
+404 - authorization
+
+
+frontend data >> server > routes > controller > services > models
+... and the callback to server back
+https://github.com/aishwaryap14/EmployeePayrollExpressJs

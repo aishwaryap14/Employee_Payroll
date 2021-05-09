@@ -1,17 +1,17 @@
 class EmployeePayroll {
     //property
     id;
-    salary;
-    gender;
-    startDate;
-    note;
-    department;
-    profilePic;
+    // salary;
+    // gender;
+    // startDate;
+    // note;
+    // department;
+    // profilePic;
 
 
 //getter and setter method
-get id() { return this._id; }
-set id(id) { this._id = id; }
+// get id() { return this._id; }
+// set id(id) { this._id = id; }
 
 get name() {return this._name;}
 set name(name) {

@@ -1,0 +1,60 @@
+{
+  "employee": [
+    {
+      "name": "mohit kumar new",
+      "gender": "male",
+      "department": [
+        "HR"
+      ],
+      "salary": "30000",
+      "startDate": "1 Jan 2020",
+      "notes": "",
+      "id": 1604589551457,
+      "profilePic": "../assets/profile-images/Ellipse 1.png"
+    },
+    {
+      "name": "mohit kumar test",
+      "gender": "male",
+      "department": [
+        "HR"
+      ],
+      "salary": "30000",
+      "startDate": "1 Jan 2020",
+      "notes": "",
+      "id": 1604589594363,
+      "profilePic": "../assets/profile-images/Ellipse 1.png"
+    },
+    {
+      "name": "Aishwarya Potdar",
+      "gender": "female",
+      "department": [
+        "HR",
+        "Sales",
+        "Finance",
+        "Engineer"
+      ],
+      "salary": "482100",
+      "startDate": "1 May 2021",
+      "notes": "",
+      "id": 1604589731061,
+      "profilePic": "../assets/profile-images/Ellipse -1.png",
+      "note": "hello"
+    },
+    {
+      "name": "Rohit Sharma cricket",
+      "profilePic": "../assets/profile-images/Ellipse -3.png",
+      "gender": "male",
+      "department": [
+        "HR",
+        "Sales",
+        "Finance",
+        "Engineer",
+        "Others"
+      ],
+      "salary": "473100",
+      "note": "All In one",
+      "startDate": "8 May 2021",
+      "id": 1604589731062
+    }
+  ]
+}
